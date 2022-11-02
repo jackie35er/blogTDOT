@@ -50,6 +50,7 @@
             localStorage.setItem("jwt", token)
 
         jwtToken.set(token)
+        window.location.href = '/'
     }
 </script>
 

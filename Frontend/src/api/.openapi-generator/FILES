@@ -4,5 +4,6 @@ apis/UserControllerApi.ts
 apis/index.ts
 index.ts
 models/CreateUserDto.ts
+models/PostDto.ts
 models/index.ts
 runtime.ts
