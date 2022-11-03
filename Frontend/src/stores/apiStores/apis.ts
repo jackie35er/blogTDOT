@@ -32,4 +32,3 @@ jwtToken.subscribe((value) => {
 )
 
 export const homeApi = new HomeControllerApi(conf)
-export const userApi = new UserControllerApi()

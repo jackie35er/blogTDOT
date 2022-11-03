@@ -15,17 +15,54 @@
 
 import * as runtime from '../runtime';
 import type {
+  CreatePostDto,
   PostDto,
 } from '../models';
 import {
+    CreatePostDtoFromJSON,
+    CreatePostDtoToJSON,
     PostDtoFromJSON,
     PostDtoToJSON,
 } from '../models';
+
+export interface CreatePostRequest {
+    createPostDto: CreatePostDto;
+}
 
 /**
  * 
  */
 export class HomeControllerApi extends runtime.BaseAPI {
+
+    /**
+     */
+    async createPostRaw(requestParameters: CreatePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.createPostDto === null || requestParameters.createPostDto === undefined) {
+            throw new runtime.RequiredError('createPostDto','Required parameter requestParameters.createPostDto was null or undefined when calling createPost.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        const response = await this.request({
+            path: `/posts`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: CreatePostDtoToJSON(requestParameters.createPostDto),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async createPost(requestParameters: CreatePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.createPostRaw(requestParameters, initOverrides);
+    }
 
     /**
      */

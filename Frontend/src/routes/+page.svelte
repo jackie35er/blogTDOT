@@ -22,11 +22,11 @@
         Please login to see posts
     </div>
 {:else}
-    <div class="p-3">
+    <div class="grid place-items-center h-screen ">
         {#each posts as post}
-        <div class="p-1 m-2 block bg-white rounded-lg border border-gray-200 shadow-md" style="max-width: 10rem;">
+        <div class="p-1 m-2 block bg-white rounded-lg border border-gray-200 shadow-md w-1/2" >
             <p class="text-lg">{post.title}</p> 
-            <p class="text-sm">{post.description}</p>
+            <p class="text-sm overflow-auto">{post.description}</p>
             <p class="block mb-2 text-xs font-medium text-gray-900 dark:text-gray-600">by {post.authorName} </p>
         </div>
 

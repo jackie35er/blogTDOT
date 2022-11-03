@@ -24,7 +24,7 @@
             </div>
             <div class="p-3">
                 <button 
-                class="bg-red-400 border border-gray-300 text-white text-sm rounded-lg  block p-2 hover:text-slate-300 transitifon-colors"
+                class="bg-red-400 border border-gray-300 text-white text-sm rounded-lg  block p-2 hover:text-slate-300 transitifon-colors overflow-auto"
                 on:click={register}
                 >
                     Register
@@ -61,11 +61,19 @@
                 profilePictureBase64: ''
             }
         )
-        console.log(createUserDto)
         userApi.createUser(
             {
                 createUserDto:createUserDto
             }
+            ).then(
+                (response) => {
+                    window.location.href = '/login'
+                }
+            ).catch(
+                (error) => {
+                    console.log(error)
+                    alert("User existiert bereits")
+                }
             )
     }
 

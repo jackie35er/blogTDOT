@@ -1,8 +1,8 @@
-.openapi-generator-ignore
 apis/HomeControllerApi.ts
 apis/UserControllerApi.ts
 apis/index.ts
 index.ts
+models/CreatePostDto.ts
 models/CreateUserDto.ts
 models/PostDto.ts
 models/index.ts

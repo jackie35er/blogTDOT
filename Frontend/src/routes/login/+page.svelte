@@ -31,8 +31,8 @@
     import {jwtToken} from "../../stores/apiStores/JwtToken.js";
 
 
-    let user = 'user'
-    let password = 'password'
+    let user = ''
+    let password = ''
 
 
     async function login() {
@@ -45,12 +45,19 @@
         )
 
         let auth = new UserControllerApi(conf)
-        
-        let token = await auth.token()
+
+        try{
+            let token = await auth.token()
             localStorage.setItem("jwt", token)
 
-        jwtToken.set(token)
-        window.location.href = '/'
+            jwtToken.set(token)
+            window.location.href = '/'
+        }
+        catch (e) {
+            console.log(e)
+            alert("Username oder Passwort falsch")
+        }
+
     }
 </script>
 
